@@ -10,7 +10,7 @@ return {
     { "nvim-pack/nvim-spectre", enabled = false },
 
     { "norcalli/nvim-colorizer.lua" },
-    { "christoomey/vim-tmux-navigator" },
+    -- { "christoomey/vim-tmux-navigator" },
     { "f-person/git-blame.nvim" },
     { "ziontee113/color-picker.nvim", opts = {} },
     { "danymat/neogen", opts = {} },

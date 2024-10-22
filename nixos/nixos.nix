@@ -13,7 +13,7 @@ in {
     ./nautilus.nix
     ./laptop.nix
     ./hyprland.nix
-    ./gnome.nix
+    # ./gnome.nix
   ];
 
   hyprland.enable = true;
@@ -30,7 +30,7 @@ in {
       "video"
       #"libvirtd"
       "docker"
-      "openrazer" #
+      # "openrazer" #
     ];
   };
 
@@ -45,10 +45,12 @@ in {
       imports = [
         ../home-manager/nvim.nix
         ../home-manager/ags.nix
-        ../home-manager/blackbox.nix
+        # ../home-manager/blackbox.nix
+        ../home-manager/vscode.nix
+        ../home-manager/kitty.nix
         ../home-manager/browser.nix
-        ../home-manager/dconf.nix
-        #../home-manager/distrobox.nix
+        # ../home-manager/dconf.nix
+        # ../home-manager/distrobox.nix
         ../home-manager/git.nix
         ../home-manager/hyprland.nix
         ../home-manager/lf.nix
@@ -56,18 +58,18 @@ in {
         ../home-manager/sh.nix
         ../home-manager/starship.nix
         ../home-manager/theme.nix
-        ../home-manager/tmux.nix
-        ../home-manager/wezterm.nix
+        #../home-manager/tmux.nix
+        # ../home-manager/wezterm.nix
         ./home.nix
       ];
     };
   };
 
-  specialisation = {
-    gnome.configuration = {
-      system.nixos.tags = ["Gnome"];
-      hyprland.enable = lib.mkForce false;
-      gnome.enable = true;
-    };
-  };
+  # specialisation = {
+  #   gnome.configuration = {
+  #     system.nixos.tags = ["Gnome"];
+  #     hyprland.enable = lib.mkForce false;
+  #     gnome.enable = true;
+  #   };
+  # };
 }

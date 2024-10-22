@@ -14,12 +14,14 @@
     brightnessctl
     swww
     inputs.matugen.packages.${system}.default
+
+    fzf
+    hyprpicker
     slurp
     wf-recorder
     wl-clipboard
     wayshot
     swappy
-    hyprpicker
     pavucontrol
     networkmanager
     gtk3

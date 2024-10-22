@@ -43,16 +43,17 @@
       adwaita-icon-theme
       qogir-icon-theme
       loupe # image viwer
-      nautilus
+      nautilus # file manager
       baobab # disk analizer
+      geary # email
       gnome-text-editor
-      gnome-calendar
-      gnome.gnome-boxes
+      #gnome-calendar
+      #gnome.gnome-boxes
       #gnome-system-monitor
-      gnome.gnome-control-center
-      gnome.gnome-weather
+      #gnome.gnome-control-center
+      #gnome.gnome-weather
       gnome-calculator
-      gnome.gnome-clocks
+      #gnome.gnome-clocks
       #gnome.gnome-software # for flatpak
       #wl-gammactl
       wl-clipboard

@@ -45,8 +45,8 @@ in {
       ];
 
       monitor = [
-        # "eDP-1, 1920x1080, 0x0, 1"
-        # "HDMI-A-1, 2560x1440, 1920x0, 1"
+        # "eDP-1, 1920x1080@240, 0x0, 1"
+        # "HDMI-A-1, 3840x2160@60, 1920x0, 1"
         ",preferred,auto,1"
       ];
 
@@ -93,15 +93,10 @@ in {
         (f "org.gnome.Calculator")
         (f "org.gnome.Nautilus")
         (f "pavucontrol")
-        (f "nm-connection-editor")
-        (f "blueberry.py")
         (f "org.gnome.Settings")
-        (f "org.gnome.design.Palette")
         (f "Color Picker")
         (f "xdg-desktop-portal")
         (f "xdg-desktop-portal-gnome")
-        (f "de.haeckerfelix.Fragments")
-        (f "com.github.Aylur.ags")
         "workspace 7, title:Spotify"
       ];
 
@@ -126,7 +121,7 @@ in {
           "SUPER, Return, exec, xterm" # xterm is a symlink, not actually xterm
           "SUPER, B, exec, brave"
           "SUPER ALT, B, exec, brave --incognito"
-          "SUPER, E, exec, wezterm -e lf"
+          "SUPER, E, exec, nautilus"
 
           # youtube
           ", XF86Launch1,  exec, ${yt}"

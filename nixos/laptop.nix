@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.laptop = {
@@ -10,35 +11,36 @@
   config = lib.mkIf config.laptop.enable {
 
     # razer
-    hardware.openrazer.enable = true;
-    boot.kernelParams = [ "button.lid_init_state=open" ];
-    environment.systemPackages = with pkgs; [
-      openrazer-daemon
-      polychromatic
-    ];
+    # hardware.openrazer.enable = true;
+    # boot.kernelParams = [ "button.lid_init_state=open" ];
+    # environment.systemPackages = with pkgs; [
+    #   openrazer-daemon
+    #   polychromatic
+    # ];
 
     # nvidia
     hardware.opengl = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      # driSupport = true;
+      # driSupport32Bit = true;
     };
 
-    hardware.graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver # iHD
-        intel-vaapi-driver # i965
-      ];
-    };
-    environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; };
+    # hardware.graphics = {
+    #   enable = true;
+    #   extraPackages = with pkgs; [
+    #     intel-media-driver # iHD
+    #     intel-vaapi-driver # i965
+    #   ];
+    # };
+    # environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; };
 
     services.xserver.videoDrivers = ["nvidia"];
 
     hardware.nvidia = {
       prime = {
-        offload.enable = true;
-        offload.enableOffloadCmd = true;
+        # offload.enable = true;
+        # offload.enableOffloadCmd = true;
+        sync.enable = true;
         nvidiaBusId = "PCI:1:0:0";
         intelBusId = "PCI:0:2:0";
       };
@@ -50,9 +52,11 @@
         finegrained = true;
       };
 
-      open = true;
+      open = false;
       nvidiaSettings = false; # gui app
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      # package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+
     };
   };
 }

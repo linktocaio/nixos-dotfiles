@@ -8,12 +8,16 @@
 
   home = {
     sessionVariables = {
-      #QT_XCB_GL_INTEGRATION = "none"; # kde-connect
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_INSECURE = "1";
-      BAT_THEME = "base16";
+      
+      NIXOS_OZONE_WL = "1";
+
       GOPATH = "${config.home.homeDirectory}/.local/share/go";
       GOMODCACHE = "${config.home.homeDirectory}/.cache/go/pkg/mod";
+      
+      BAT_THEME = "base16";
+      #QT_XCB_GL_INTEGRATION = "none"; # kde-connect
     };
 
     sessionPath = [
@@ -25,9 +29,9 @@
     home = config.home.homeDirectory;
   in [
     "file://${home}/Documents"
-    "file://${home}/Music"
+    # "file://${home}/Music"
     "file://${home}/Pictures"
-    "file://${home}/Videos"
+    # "file://${home}/Videos"
     "file://${home}/Downloads"
     "file://${home}/Desktop"
     #"file://${home}/Work"

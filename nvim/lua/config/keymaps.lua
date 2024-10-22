@@ -41,10 +41,10 @@ km("n", "<leader>cp", vim.cmd.PickColor, { desc = "[P]ick Color" })
 km("n", "<Leader>dg", require("neogen").generate, { desc = "Generate Docs" })
 
 -- tmux
-km({ "n", "i", "v" }, "<C-h>", vim.cmd.TmuxNavigateLeft)
-km({ "n", "i", "v" }, "<C-j>", vim.cmd.TmuxNavigateDown)
-km({ "n", "i", "v" }, "<C-k>", vim.cmd.TmuxNavigateUp)
-km({ "n", "i", "v" }, "<C-l>", vim.cmd.TmuxNavigateRight)
+-- km({ "n", "i", "v" }, "<C-h>", vim.cmd.TmuxNavigateLeft)
+-- km({ "n", "i", "v" }, "<C-j>", vim.cmd.TmuxNavigateDown)
+-- km({ "n", "i", "v" }, "<C-k>", vim.cmd.TmuxNavigateUp)
+-- km({ "n", "i", "v" }, "<C-l>", vim.cmd.TmuxNavigateRight)
 
 -- tranparency
 km("n", "<leader>o", function()
