@@ -19,18 +19,18 @@ with lib.hm.gvariant; {
       disabled = ["org.gnome.Boxes.desktop"];
       enabled = ["org.gnome.Weather.desktop"];
       sort-order = [
-        "org.gnome.Contacts.desktop"
+        "org.gnome.Software.desktop"
+        "org.gnome.Settings.desktop"
+        "org.gnome.Calculator.desktop"
         "org.gnome.Documents.desktop"
         "org.gnome.Nautilus.desktop"
         "org.gnome.Calendar.desktop"
-        "org.gnome.Calculator.desktop"
-        "org.gnome.Software.desktop"
-        "org.gnome.Settings.desktop"
         "org.gnome.clocks.desktop"
         "org.gnome.design.IconLibrary.desktop"
         "org.gnome.seahorse.Application.desktop"
         "org.gnome.Weather.desktop"
         "org.gnome.Boxes.desktop"
+        "org.gnome.Contacts.desktop"
       ];
     };
 
@@ -65,7 +65,7 @@ with lib.hm.gvariant; {
       mouse-button-modifier = "<Super>";
       num-workspaces = 5;
       resize-with-right-button = true;
-      focus-mode = "sloppy";
+      focus-mode = "click";
     };
 
     "org/gnome/mutter" = {
@@ -104,7 +104,7 @@ with lib.hm.gvariant; {
 
     "org/gnome/shell" = {
       favorite-apps = [
-        "firefox.desktop"
+        "brave.desktop"
         "org.wezfurlong.wezterm.desktop"
         "org.gnome.Nautilus.desktop"
         "org.gnome.Calendar.desktop"
@@ -123,16 +123,16 @@ with lib.hm.gvariant; {
     };
 
     "system/locale" = {
-      region = "hu_HU.UTF-8";
+      region = "en_US.UTF-8";
     };
 
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
+    # "org/virt-manager/virt-manager/connections" = {
+    #   autoconnect = ["qemu:///system"];
+    #   uris = ["qemu:///system"];
+    # };
 
-    "org/gnome/TextEditor" = {
-      keybindings = "vim";
-    };
+    # "org/gnome/TextEditor" = {
+    #   keybindings = "vim";
+    # };
   };
 }

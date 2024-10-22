@@ -7,15 +7,15 @@
     auto-optimise-store = true;
   };
 
-  # camera
-  programs.droidcam.enable = true;
+  # phone as webcam
+  #programs.droidcam.enable = true;
 
   # virtualisation
-  programs.virt-manager.enable = true;
+  #programs.virt-manager.enable = true;
   virtualisation = {
     podman.enable = true;
     docker.enable = true;
-    libvirtd.enable = true;
+    #libvirtd.enable = true;
   };
 
   # dconf
@@ -35,8 +35,8 @@
       enable = true;
       excludePackages = [pkgs.xterm];
     };
-    printing.enable = true;
-    flatpak.enable = true;
+    # printing.enable = true;
+    # flatpak.enable = true;
     openssh.enable = true;
   };
 
@@ -48,15 +48,15 @@
   '';
 
   # kde connect
-  networking.firewall = rec {
-    allowedTCPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
-    ];
-    allowedUDPPortRanges = allowedTCPPortRanges;
-  };
+  #networking.firewall = rec {
+  #  allowedTCPPortRanges = [
+  #    {
+  #      from = 1714;
+  #      to = 1764;
+  #    }
+  #  ];
+  #  allowedUDPPortRanges = allowedTCPPortRanges;
+  #};
 
   # network
   networking.networkmanager.enable = true;

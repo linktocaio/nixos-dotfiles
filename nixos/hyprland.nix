@@ -42,24 +42,24 @@
       morewaita-icon-theme
       adwaita-icon-theme
       qogir-icon-theme
-      loupe
+      loupe # image viwer
       nautilus
-      baobab
+      baobab # disk analizer
       gnome-text-editor
       gnome-calendar
       gnome.gnome-boxes
-      gnome-system-monitor
+      #gnome-system-monitor
       gnome.gnome-control-center
       gnome.gnome-weather
       gnome-calculator
       gnome.gnome-clocks
-      gnome.gnome-software # for flatpak
-      wl-gammactl
+      #gnome.gnome-software # for flatpak
+      #wl-gammactl
       wl-clipboard
       wayshot
-      pavucontrol
+      pavucontrol # gui audio mixer
       brightnessctl
-      swww
+      swww # wallpaper
     ];
 
     systemd = {
@@ -88,8 +88,8 @@
       gnome = {
         evolution-data-server.enable = true;
         glib-networking.enable = true;
-        gnome-keyring.enable = true;
-        gnome-online-accounts.enable = true;
+        #gnome-keyring.enable = true;
+        #gnome-online-accounts.enable = true;
         tracker-miners.enable = true;
         tracker.enable = true;
       };

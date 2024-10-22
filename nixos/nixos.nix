@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  username = "demeter";
+  username = "caio";
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -17,19 +17,20 @@ in {
   ];
 
   hyprland.enable = true;
-  asusLaptop.enable = false;
+  laptop.enable = false;
 
   users.users.${username} = {
     isNormalUser = true;
     initialPassword = username;
     extraGroups = [
-      "nixosvmtest"
+      #"nixosvmtest"
       "networkmanager"
       "wheel"
       "audio"
       "video"
-      "libvirtd"
+      #"libvirtd"
       "docker"
+      "openrazer" #
     ];
   };
 
@@ -47,7 +48,7 @@ in {
         ../home-manager/blackbox.nix
         ../home-manager/browser.nix
         ../home-manager/dconf.nix
-        ../home-manager/distrobox.nix
+        #../home-manager/distrobox.nix
         ../home-manager/git.nix
         ../home-manager/hyprland.nix
         ../home-manager/lf.nix

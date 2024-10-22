@@ -41,7 +41,7 @@ in {
       exec-once = [
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
-        "fragments"
+        #"fragments"
       ];
 
       monitor = [
@@ -61,7 +61,7 @@ in {
       };
 
       input = {
-        kb_layout = "hu,us";
+        kb_layout = "us";
         follow_mouse = 1;
         touchpad = {
           natural_scroll = "yes";
@@ -124,7 +124,8 @@ in {
           ",Print,         exec, ${screenshot}"
           "SHIFT,Print,    exec, ${screenshot} --full"
           "SUPER, Return, exec, xterm" # xterm is a symlink, not actually xterm
-          "SUPER, W, exec, firefox"
+          "SUPER, B, exec, brave"
+          "SUPER ALT, B, exec, brave --incognito"
           "SUPER, E, exec, wezterm -e lf"
 
           # youtube

@@ -3,16 +3,19 @@
   lib,
   ...
 }: {
-  options.asusLaptop = {
-    enable = lib.mkEnableOption "Asus Laptop";
+  options.laptop = {
+    enable = lib.mkEnableOption "Laptop Configuration";
   };
 
-  config = lib.mkIf config.asusLaptop.enable {
-    # asusctl
-    services.asusd = {
-      enable = true;
-      enableUserService = true;
-    };
+  config = lib.mkIf config.laptop.enable {
+
+    # razer
+    hardware.openrazer.enable = true;
+    boot.kernelParams = [ "button.lid_init_state=open" ];
+    environment.systemPackages = with pkgs; [
+      openrazer-daemon
+      polychromatic
+    ];
 
     # nvidia
     hardware.opengl = {
@@ -21,6 +24,15 @@
       driSupport32Bit = true;
     };
 
+    hardware.graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver # iHD
+        intel-vaapi-driver # i965
+      ];
+    };
+    environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; };
+
     services.xserver.videoDrivers = ["nvidia"];
 
     hardware.nvidia = {
@@ -28,7 +40,7 @@
         offload.enable = true;
         offload.enableOffloadCmd = true;
         nvidiaBusId = "PCI:1:0:0";
-        amdgpuBusId = "PCI:6:0:0";
+        intelBusId = "PCI:0:2:0";
       };
 
       modesetting.enable = true;

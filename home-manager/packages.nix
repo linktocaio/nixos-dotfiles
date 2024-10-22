@@ -11,8 +11,8 @@
       (mpv.override {scripts = [mpvScripts.mpris];})
       spotify
       # gnome-secrets
-      fragments
-      figma-linux
+      # fragments
+      # figma-linux
       # yabridge
       # yabridgectl
       # wine-staging
@@ -24,8 +24,8 @@
       fd
       ripgrep
       fzf
-      lazydocker
-      lazygit
+      # lazydocker
+      # lazygit
     ];
   };
 }

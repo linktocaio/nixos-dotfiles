@@ -83,15 +83,15 @@ in {
     platformTheme.name = "kde";
   };
 
-  home.file.".local/share/flatpak/overrides/global".text = let
-    dirs = [
-      "/nix/store:ro"
-      "xdg-config/gtk-3.0:ro"
-      "xdg-config/gtk-4.0:ro"
-      "${config.xdg.dataHome}/icons:ro"
-    ];
-  in ''
-    [Context]
-    filesystems=${builtins.concatStringsSep ";" dirs}
-  '';
+  # home.file.".local/share/flatpak/overrides/global".text = let
+  #   dirs = [
+  #     "/nix/store:ro"
+  #     "xdg-config/gtk-3.0:ro"
+  #     "xdg-config/gtk-4.0:ro"
+  #     "${config.xdg.dataHome}/icons:ro"
+  #   ];
+  # in ''
+  #   [Context]
+  #   filesystems=${builtins.concatStringsSep ";" dirs}
+  # '';
 }

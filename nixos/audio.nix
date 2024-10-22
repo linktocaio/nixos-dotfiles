@@ -1,12 +1,12 @@
 {
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
+  security.rtkit.enable = true; # RealtimeKit
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
+    jack.enable = true; # Low-latency audio server
     wireplumber.enable = true;
     extraConfig.pipewire."92-low-latency" = {
       "context.properties" = {
