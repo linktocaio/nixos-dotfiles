@@ -1,27 +1,29 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: let
   username = "caio";
+
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
+
     ./system.nix
     ./audio.nix
     ./locale.nix
     ./nautilus.nix
-    ./laptop.nix
+    ./gpu.nix
     ./hyprland.nix
     # ./gnome.nix
   ];
 
-  hyprland.enable = true;
-  laptop.enable = false;
-
   users.users.${username} = {
-    isNormalUser = true;
+    description = "Nothing New Here";
     initialPassword = username;
+    isNormalUser = true;
+
     extraGroups = [
       #"nixosvmtest"
       "networkmanager"
@@ -35,36 +37,50 @@ in {
   };
 
   home-manager = {
-    backupFileExtension = "backup";
-    useGlobalPkgs = true;
-    useUserPackages = true;
     extraSpecialArgs = {inherit inputs;};
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    
+    backupFileExtension = "backup";
+
     users.${username} = {
       home.username = username;
       home.homeDirectory = "/home/${username}";
+
       imports = [
-        ../home-manager/nvim.nix
+        ./home.nix
+
+        ../home-manager/hyprland.nix  
         ../home-manager/ags.nix
-        # ../home-manager/blackbox.nix
-        ../home-manager/vscode.nix
-        ../home-manager/kitty.nix
+      
         ../home-manager/browser.nix
+        
+        ../home-manager/kitty.nix
+        ../home-manager/btop.nix
+        ../home-manager/sh.nix
+
+        ../home-manager/git.nix
+        ../home-manager/nvim.nix
+        ../home-manager/vscode.nix
+        
+        ../home-manager/lf.nix
+
+        # ../home-manager/theme.nix
+        ../home-manager/starship.nix
+        
+        ../home-manager/packages.nix
+
+        # ../home-manager/blackbox.nix
         # ../home-manager/dconf.nix
         # ../home-manager/distrobox.nix
-        ../home-manager/git.nix
-        ../home-manager/hyprland.nix
-        ../home-manager/lf.nix
-        ../home-manager/packages.nix
-        ../home-manager/sh.nix
-        ../home-manager/starship.nix
-        ../home-manager/theme.nix
         #../home-manager/tmux.nix
         # ../home-manager/wezterm.nix
-        ./home.nix
       ];
     };
   };
 
+  hyprland.enable = true;
+  gpu.enable = true;
   # specialisation = {
   #   gnome.configuration = {
   #     system.nixos.tags = ["Gnome"];

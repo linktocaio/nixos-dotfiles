@@ -2,7 +2,9 @@
   description = "Configurations of LinkToCaio";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "nixpkgs/nixos-unstable";
+
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,20 +36,25 @@
 
   outputs = inputs @ {
     self,
-    home-manager,
     nixpkgs,
+    home-manager,
     ...
-  }: {
-    packages.x86_64-linux.default =
-      nixpkgs.legacyPackages.x86_64-linux.callPackage ./ags {inherit inputs;};
+  }: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    packages.${system}.default =
+      pkgs.callPackage ./ags {inherit inputs;};
 
     nixosConfigurations = {
       "nixos" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
+
         specialArgs = {
           inherit inputs;
-          asztal = self.packages.x86_64-linux.default;
+          asztal = self.packages.${system}.default;
         };
+
         modules = [
           ./nixos/nixos.nix
           home-manager.nixosModules.home-manager

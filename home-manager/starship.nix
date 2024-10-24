@@ -114,21 +114,11 @@ in {
     source = tomlFormat.generate "starship-config" settings;
   };
 
-  programs.bash.initExtra = ''
-    eval "$(${starshipCmd} init bash)"
-  '';
-
   programs.zsh.initExtra = ''
     eval "$(${starshipCmd} init zsh)"
   '';
 
-  programs.nushell = {
-    extraEnv = ''
-      mkdir ${config.xdg.cacheHome}/starship
-      ${starshipCmd} init nu | save -f ${config.xdg.cacheHome}/starship/init.nu
-    '';
-    extraConfig = ''
-      use ${config.xdg.cacheHome}/starship/init.nu
-    '';
-  };
+  programs.bash.initExtra = ''
+    eval "$(${starshipCmd} init bash)"
+  '';
 }

@@ -80,7 +80,7 @@ in {
 
   qt = {
     enable = true;
-    platformTheme.name = "kde";
+    # platformTheme.name = "kde";
   };
 
   # home.file.".local/share/flatpak/overrides/global".text = let

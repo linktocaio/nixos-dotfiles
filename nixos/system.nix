@@ -3,9 +3,15 @@
   documentation.nixos.enable = false; # .desktop
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
-    experimental-features = "nix-command flakes";
+    experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
+
+    nix.gc = {
+     automatic = true;
+     dates = "weekly";
+     options = "--delete-older-than 15d";
+   };
 
   # phone as webcam
   #programs.droidcam.enable = true;
@@ -70,14 +76,18 @@
 
   # bootloader
   boot = {
-    tmp.cleanOnBoot = true;
-    supportedFilesystems = ["ntfs"];
+    kernelPackages = pkgs.linuxPackages; # Kernel
+
     loader = {
       timeout = 2;
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    
+    tmp.cleanOnBoot = true;
+    supportedFilesystems = ["ntfs"];
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
+  #23.05
 }

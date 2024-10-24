@@ -16,14 +16,14 @@
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   screenshot = import ./scripts/screenshot.nix pkgs;
 in {
-  xdg.desktopEntries."org.gnome.Settings" = {
-    name = "Settings";
-    comment = "Gnome Control Center";
-    icon = "org.gnome.Settings";
-    exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
-    categories = ["X-Preferences"];
-    terminal = false;
-  };
+  # xdg.desktopEntries."org.gnome.Settings" = {
+  #   name = "Settings";
+  #   comment = "Gnome Control Center";
+  #   icon = "org.gnome.Settings";
+  #   exec = "env XDG_CURRENT_DESKTOP=gnome ${pkgs.gnome.gnome-control-center}/bin/gnome-control-center";
+  #   categories = ["X-Preferences"];
+  #   terminal = false;
+  # };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -93,10 +93,10 @@ in {
         (f "org.gnome.Calculator")
         (f "org.gnome.Nautilus")
         (f "pavucontrol")
-        (f "org.gnome.Settings")
+        # (f "org.gnome.Settings")
         (f "Color Picker")
         (f "xdg-desktop-portal")
-        (f "xdg-desktop-portal-gnome")
+        # (f "xdg-desktop-portal-gnome")
         "workspace 7, title:Spotify"
       ];
 

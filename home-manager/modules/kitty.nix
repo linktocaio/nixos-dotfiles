@@ -13,6 +13,10 @@
 in {
   options.terminals.kitty = {
     enable = mkEnableOption "kitty";
+    
+    shellIntegration.enableZshIntegration = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    
     alias = mkOption {
       type = types.listOf types.str;
       default = [];

@@ -1,6 +1,6 @@
 {
   hardware.pulseaudio.enable = false;
-  # security.rtkit.enable = true; # RealtimeKit
+  security.rtkit.enable = true; # RealtimeKit
   services.pipewire = {
     enable = true;
     alsa.enable = true;

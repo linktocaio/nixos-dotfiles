@@ -2,7 +2,5 @@
 
   programs.vscode = {
     enable = true;
-    
-
   };
 }
