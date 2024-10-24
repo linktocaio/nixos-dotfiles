@@ -15,6 +15,9 @@
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   screenshot = import ./scripts/screenshot.nix pkgs;
+
+  e = "exec, ags -b hypr";
+
 in {
   # xdg.desktopEntries."org.gnome.Settings" = {
   #   name = "Settings";
@@ -45,9 +48,9 @@ in {
       ];
 
       monitor = [
-        # "eDP-1, 1920x1080@240, 0x0, 1"
-        # "HDMI-A-1, 3840x2160@60, 1920x0, 1"
-        ",preferred,auto,1"
+        "eDP-1, 1920x1080@240, 0x0, 1"
+        "HDMI-A-1, 3840x2160@60, 1920x0, 1"
+        # ",preferred,auto,1"
       ];
 
       general = {
@@ -100,6 +103,10 @@ in {
         "workspace 7, title:Spotify"
       ];
 
+      bindr =  [
+        "SUPER, SUPER_L,  ${e} -t launcher"
+      ];
+      
       bind = let
         binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
         mvfocus = binding "SUPER" "movefocus";
@@ -107,20 +114,22 @@ in {
         resizeactive = binding "SUPER CTRL" "resizeactive";
         mvactive = binding "SUPER ALT" "moveactive";
         mvtows = binding "SUPER SHIFT" "movetoworkspace";
-        e = "exec, ags -b hypr";
         arr = [1 2 3 4 5 6 7];
       in
         [
           "CTRL SHIFT, R,  ${e} quit; ags -b hypr"
-          "SUPER, R,       ${e} -t launcher"
-          "SUPER, Tab,     ${e} -t overview"
           ",XF86PowerOff,  ${e} -r 'powermenu.shutdown()'"
-          ",XF86Launch4,   ${e} -r 'recorder.start()'"
+          
+          "SUPER, Tab,     ${e} -t overview"
+
           ",Print,         exec, ${screenshot}"
           "SHIFT,Print,    exec, ${screenshot} --full"
+
           "SUPER, Return, exec, xterm" # xterm is a symlink, not actually xterm
+
           "SUPER, B, exec, brave"
           "SUPER ALT, B, exec, brave --incognito"
+
           "SUPER, E, exec, nautilus"
 
           # youtube
@@ -128,7 +137,8 @@ in {
 
           "ALT, Tab, focuscurrentorlast"
           "CTRL ALT, Delete, exit"
-          "ALT, Q, killactive"
+
+          "SUPER, Q, killactive"
           "SUPER, F, togglefloating"
           "SUPER, G, fullscreen"
           "SUPER, O, fakefullscreen"

@@ -12,16 +12,22 @@
     sessionVariable = true;
 
     settings = {
-      confirm_os_window_close = 0;
       enable_audio_bell = false;
-      mouse_hide_wait = "-1.0";
+      confirm_os_window_close = 1;
+      mouse_hide_wait = -1;
       window_padding_width = 10;
 
-      dynamic_background_opacity = true;
-      background_opacity = "0.5";
-      background_blur = 5;
+      cursor_shape = "beam";
+      allow_hyperlinks = "yes";
+
+      shell = "zsh";
+      font_family = "FiraCode Nerd Font";
+      font_size = 12;
+
+      background_opacity = "0.95";
 
       background = "#191919";
+
       selection_background = "#343434";
       
       foreground = "#c4c4b5";

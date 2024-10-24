@@ -24,6 +24,8 @@ in {
     initialPassword = username;
     isNormalUser = true;
 
+    # shell = pkgs.zsh;
+
     extraGroups = [
       #"nixosvmtest"
       "networkmanager"
@@ -65,7 +67,7 @@ in {
         
         ../home-manager/lf.nix
 
-        # ../home-manager/theme.nix
+        ../home-manager/theme.nix
         ../home-manager/starship.nix
         
         ../home-manager/packages.nix

@@ -12,11 +12,7 @@
   cfg = config.terminals.kitty;
 in {
   options.terminals.kitty = {
-    enable = mkEnableOption "kitty";
-    
-    shellIntegration.enableZshIntegration = true;
-    shell = "${pkgs.zsh}/bin/zsh";
-    
+    enable = mkEnableOption "kitty";    
     alias = mkOption {
       type = types.listOf types.str;
       default = [];
@@ -36,6 +32,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.kitty = {
+      enable = true;
+      settings = cfg.settings;
+    };
+
     home = {
       packages = let
         term = ''${pkgs.kitty}/bin/kitty $@'';
@@ -44,19 +45,9 @@ in {
         [pkgs.kitty] ++ aliases;
 
       sessionVariables.TERMINAL = mkIf cfg.sessionVariable "kitty";
-
-      # file = let
-      #   mkScheme = name: {
-      #     ".local/share/kitty-themes/themes/${sanitizeDerivationName name}.conf" = {
-      #       text = builtins.toJSON (cfg.colors.${name} // {inherit name;});
-      #     };
-      #   };
-      # in
-      #   builtins.foldl' (acc: x: acc // x) {} (map mkScheme (builtins.attrNames cfg.colors));
     };
 
     dconf.settings = {
-      "com/github/kovidgoyal/kitty" = cfg.settings;
       "com/github/stunkymonkey/nautilus-open-any-terminal".terminal = "kitty";
     };
   };
